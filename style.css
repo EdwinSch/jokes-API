@@ -66,6 +66,7 @@ body {
   background: var(--grey-500);
 }
 .result {
+  color: var(--grey-800);
   font-size: 1.5rem;
-  line-height: 2rem;
+  line-height: 2.5rem;
 }
