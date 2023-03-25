@@ -28,9 +28,9 @@ const fetchDadJoke = async () => {
     const data = await response.json();
     result.textContent = data.joke;
   } catch (error) {
-    result.textContent = "Something went wrong :(";
+    result.textContent = "There is an error :(";
     result.style.color = "red";
-    console.log(error);
+    // console.log(error);
   }
 };
 
