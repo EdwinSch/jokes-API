@@ -5,6 +5,7 @@ const result = getElement(".result");
 
 /* ---- SCRIPT ---- */
 
+// GET new joke on click
 btn.addEventListener("click", () => {
   fetchDadJoke();
 });
@@ -13,16 +14,28 @@ btn.addEventListener("click", () => {
 
 // Fetch dad joke from API
 const fetchDadJoke = async () => {
-  const response = await fetch(url, {
-    headers: {
-      Accept: "application/json",
-      "User-Agent": "educational",
-    },
-  });
-  // console.log(response);
-  const data = await response.json();
-  result.textContent = data.joke;
+  // init with loading text while loading
+  result.textContent = "Loading...";
+  try {
+    // fetch request & push to DOM
+    const response = await fetch(url, {
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "educational",
+      },
+    });
+    // console.log(response);
+    const data = await response.json();
+    result.textContent = data.joke;
+  } catch (error) {
+    result.textContent = "Something went wrong :(";
+    result.style.color = "red";
+    console.log(error);
+  }
 };
+
+// GET joke on page load
+fetchDadJoke();
 
 //-- Get DOM element function
 function getElement(selector) {
